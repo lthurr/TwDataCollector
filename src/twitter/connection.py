@@ -2,11 +2,11 @@
 import requests
 from requests_oauthlib import OAuth1
 
-CONSUMER_KEY = ""
-CONSUMER_SECRET = ""
+CONSUMER_KEY = "rSjQYbZLX0ea95itPBUMxBow0"
+CONSUMER_SECRET = "BbS9twsWdcRq9PDA4bgsmzT3GIr5xXEmHs8v3JVGU0IHRnJ3OC"
 
-OAUTH_TOKEN = ""
-OAUTH_TOKEN_SECRET = ""
+OAUTH_TOKEN = "334110003-smjZQmMhnGWWAHNlkfgNEBhDUiUCH8gJfBXXOElA"
+OAUTH_TOKEN_SECRET = "yiFB7bVDiGylVfuK8Sl7ZQz3Bmtp7dPNdYFYjEilSbXGQ"
 
 class TwitterClient():
     __oauth = None
@@ -37,10 +37,10 @@ class TwitterClient():
 
 
     def __get_query_with_params(self, url_path, params):
-        self.__oauth = OAuth1(self.consumer_key,
-                client_secret=self.consumer_secret,
-                resource_owner_key=self.auth_token,
-                resource_owner_secret=self.auth_token_secret)
+        self.__oauth = OAuth1(self.__consumer_key,
+                client_secret=self.__client_secret,
+                resource_owner_key=self.__auth_token,
+                resource_owner_secret=self.__auth_token_secret)
         r = requests.get(
             url = "https://api.twitter.com/1.1/%s" % url_path,
             params=params,
@@ -50,10 +50,10 @@ class TwitterClient():
 
 
     def __get_query(self, url_path):
-        self.__oauth = OAuth1(self.consumer_key,
-                client_secret=self.consumer_secret,
-                resource_owner_key=self.auth_token,
-                resource_owner_secret=self.auth_token_secret)
+        self.__oauth = OAuth1(self.__consumer_key,
+                client_secret=self.__cient_secret,
+                resource_owner_key=self.__auth_token,
+                resource_owner_secret=self.__auth_token_secret)
         r = requests.get(
             url = "https://api.twitter.com/1.1/%s" % url_path,
             auth = self.__oauth
