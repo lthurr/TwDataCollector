@@ -2,9 +2,9 @@ from twitter.connection import TwitterClient
 
 def main():
     tw_client = TwitterClient()
-    users = ['aprendengrande']
+    users = ['facundobatista']
     print "Collecting data from Twitter"
-    user_id = 133
+    user_id = 972
     for user in users:
         last_followers = tw_client.get_last_200_followers(user)
         greater_than_200_tw_followers = [follower['screen_name'] for follower in last_followers['users'] if follower['statuses_count']>=200]
@@ -17,6 +17,8 @@ def main():
             last_tweets = tw_client.get_last_200_tweets(screen_name)
             result_st += "count=%d\n" % len(last_tweets)
             i = 0
+            if "Rate limit exceeded" in last_tweets.__repr__():
+                assert False, "Rate limit exceeded"
             for tweet in last_tweets:
                 try:
                     result_st += screen_name + '_tweet_' + str(i) + '="%s"\n' % tweet['text'].replace('\\n', '<br>')

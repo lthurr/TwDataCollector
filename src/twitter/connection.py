@@ -2,11 +2,11 @@
 import requests
 from requests_oauthlib import OAuth1
 
-CONSUMER_KEY = ""
-CONSUMER_SECRET = ""
+CONSUMER_KEY = "rSjQYbZLX0ea95itPBUMxBow0"
+CONSUMER_SECRET = "BbS9twsWdcRq9PDA4bgsmzT3GIr5xXEmHs8v3JVGU0IHRnJ3OC"
 
-OAUTH_TOKEN = ""
-OAUTH_TOKEN_SECRET = ""
+OAUTH_TOKEN = "334110003-smjZQmMhnGWWAHNlkfgNEBhDUiUCH8gJfBXXOElA"
+OAUTH_TOKEN_SECRET = "yiFB7bVDiGylVfuK8Sl7ZQz3Bmtp7dPNdYFYjEilSbXGQ"
 
 class TwitterClient():
     __oauth = None
@@ -21,7 +21,7 @@ class TwitterClient():
 
     def get_last_200_followers(self, screen_name):
         url_path = 'followers/list.json'
-        params = {'screen_name': screen_name, 'count':'200'}
+        params = {'screen_name': screen_name, 'count':'400'}
         return self.__get_query_with_params(url_path, params)
 
 
