@@ -6,7 +6,7 @@ def main():
     users_to_iterate = tw_client.get_last_200_followers('Citroen_Arg')
     users = [user['screen_name'] for user in users_to_iterate['users']]
     print "Collecting data from Twitter"
-    user_id = 2938
+    user_id = 0
     for user in users:
         print "Collecting data from %s account" % user
         last_followers = tw_client.get_last_200_followers(user)
@@ -31,7 +31,6 @@ def main():
             with open('DATASET_%d.cfg' % user_id, 'wb') as configfile:
                 configfile.write(result_st.encode('utf8'))
             user_id += 1
-        time.sleep(350) 
 
 if __name__ == '__main__':
     main()
